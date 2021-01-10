@@ -58,7 +58,6 @@ if (isset($_POST['id']))
 			{
 				$FHIRPatientID=str_replace('Patient/','',$member);
 				$title=$participant[$j]['actor']['display'];
-				//$title='testing';
 			}
 			elseif (strpos($member, 'Practitioner/') !== false) 
 			{
@@ -100,6 +99,8 @@ if (isset($_POST['id']))
 			}
 			]
 		}';
+		
+		//update appointment
 		$curl = curl_init();
 		$headers = array('Content-Type: application/json','Authorization: Bearer '.$token,'Cache-Control: no-store','max-results=20');
 		curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'PUT');

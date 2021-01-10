@@ -1,8 +1,11 @@
 <?php
+//Get token
 $token_url="http://104.154.208.78/doctor/BackEnd/Keyckloak/GetToken.php";
 $token=file_get_contents($token_url);
 
 $FHIRPatientID=$_GET['FHIRpatientID'];
+
+//FHIR request 
 $url="https://fhir.ehealth4u.eu/fhir/Appointment?patient=".$FHIRPatientID;
 $options = array(
 	  'http'=>array(

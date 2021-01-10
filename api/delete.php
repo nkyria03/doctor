@@ -3,11 +3,14 @@
 if (isset($_POST["id"])) {
    $appid=$_POST['id'];
    
+   //get token
    $token_url="http://104.154.208.78/doctor/BackEnd/Keyckloak/GetToken.php";
-	$token=file_get_contents($token_url);
+   $token=file_get_contents($token_url);
    
+   //end point
    $url="https://fhir.ehealth4u.eu/fhir/Appointment/".$appid;
    
+   //send request
 	$headers = array('Content-Type: application/json','Authorization: Bearer '.$token);
 	$ch = curl_init();
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");

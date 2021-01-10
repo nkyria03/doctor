@@ -1,10 +1,12 @@
 <?php
+//get token
 $token_url="http://104.154.208.78/doctor/BackEnd/Keyckloak/GetToken.php";
 $token=file_get_contents($token_url);
 
 $patientID=$_GET['patientID'];
 $Phone=$_GET['Phone'];
 
+//find fhir end point
 if($Phone!=NULL)
 {    
 	$url="https://fhir.ehealth4u.eu/fhir/Patient?phone=".$Phone;	 
@@ -24,6 +26,8 @@ $options = array(
   )
 );
 $context=stream_context_create($options);
+
+//response
 echo $data=file_get_contents($url,false,$context);
 
 

@@ -1,7 +1,9 @@
 <?php
+//Get token
 $token_url="http://104.154.208.78/doctor/BackEnd/Keyckloak/GetToken.php";
 $token=file_get_contents($token_url);
 
+//read data
 $DoctorID=$_GET['DoctorID'];
 $name=$_GET['name'];
 $surname=$_GET['surname'];
@@ -13,6 +15,7 @@ $Address=$_GET['Address'];
 $City=$_GET['City'];
 $PostalCode=$_GET['PostalCode'];
 
+//FHIR request
 $url='https://fhir.ehealth4u.eu/fhir/Practitioner?identifier='.$DoctorID;
 
   $body='{
@@ -55,6 +58,7 @@ curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 curl_setopt($curl, CURLOPT_URL, $url);
 $result = curl_exec($curl);
 
+//response
 if(strpos($result, "error") !== false)
 {
   echo "Try Again".$result;

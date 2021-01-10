@@ -1,7 +1,5 @@
 <?php
-/*
-include("../config.php");
-*/
+//Get appointment details by id
 Function GetAppointmentDetails($Appid,$token)
 {
 	$url="https://fhir.ehealth4u.eu/fhir/Appointment?_id=".$Appid;
@@ -17,13 +15,17 @@ Function GetAppointmentDetails($Appid,$token)
 	$appointment=json_decode($data, true);
 	return $appointment;
 }
+
+//get token
 $token_url="http://104.154.208.78/doctor/BackEnd/Keyckloak/GetToken.php";
 $token=file_get_contents($token_url);
 
 if (isset($_POST['id'])) {
 	$Appid=$_POST['id'];
-	
+
 	$appointmentDetails=GetAppointmentDetails($Appid,$token);
+	
+	//parse data
 	$json_StartDate=$appointmentDetails['entry'][0]['resource']['start'];
 	$json_StartDate=str_replace("-03:00","",$json_StartDate);
 	$json_StartDate=str_replace("T"," ",$json_StartDate);

@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+//set appointment
 Function SetAppointment($PatientID,$Reason,$start,$end,$doctor_name,$doctor_id)
 {
 	$url="http://104.154.208.78/doctor/BackEnd/Calendar/SetAppointment.php?PatientID=".$PatientID."&Reason=".$Reason."&startDate=".$start."&endDate=".$end."&doctorname=".$doctor_name."&doctorid=".$doctor_id;

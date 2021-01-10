@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	//Get apointment
 	Function GetAppointments($practitionerID,$token)
 	{
 		$url="https://fhir.ehealth4u.eu/fhir/Appointment?practitioner=".$practitionerID."&status=pending";
@@ -16,7 +17,7 @@
 	} 
 
 	
-
+	//read practitioner details by id
 	Function GetFHIRPractitionerID($doctor_id)
 	{
 		$FHIRID	=NULL;
